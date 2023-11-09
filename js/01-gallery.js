@@ -1,17 +1,75 @@
-//Завдання 1 - бібліотека SimpleLightbox
-// Виконуй це завдання у файлах 01-gallery.html і 01-gallery.js. Розбий його на декілька підзавдань:
 
-// Додай бібліотеку SimpleLightbox як залежність проекту, використовуючи npm (посилання на CDN з твоєї минулої роботи більше не потрібне).
-// Використовуй свій JavaScript код з попередньої домашньої роботи, але виконай рефакторинг з урахуванням того, що бібліотека була встановлена через npm (синтаксис import/export).
-// Для того щоб підключити CSS код бібліотеки в проект, необхідно додати ще один імпорт, крім того, що описаний в документації.
+  const booksList = document.querySelector('.books-list');
+  const modal = document.querySelector('.modal');
+  const modalContent = document.querySelector('.modal-content');
 
-// // Описаний в документації
-// import SimpleLightbox from "simplelightbox";
-// // Додатковий імпорт стилів
-// import "simplelightbox/dist/simple-lightbox.min.css";
-// Add imports above this line
+  // Функція для відображення повідомлення про помилку за допомогою Notiflix
+  function showErrorNotification(message) {
+    Notiflix.Notify.Failure(message);
+  }
 
-import { galleryItems } from './gallery-items';
-// Change code below this line
+  // Функція для отримання книг за вказаною категорією з сервера за допомогою Axios
+  function getBooksByCategory(category) {
+    axios.get(`https://books-backend.p.goit.global/books/category?category=${category}`)
+      .then(response => {
+        const books = response.data.books;
+        displayBooks(books);
+      })
+      .catch(error => {
+        showErrorNotification('Помилка при отриманні даних з сервера.');
+        console.error(error);
+      });
+  }
 
-console.log(galleryItems);
+  // Функція для відображення книг на сторінці
+  function displayBooks(books) {
+    booksList.innerHTML = '';
+    books.forEach(book => {
+      const bookItem = document.createElement('li');
+      bookItem.className = 'books-item';
+      bookItem.innerHTML = `
+        <img class="books-img" src="${book.coverImageUrl}" alt="Обкладинка книги" />
+        <h2 class="books-title">${book.title}</h2>
+        <p class="books-author">${book.author}</p>
+        <button class="book-details-button" data-bookid="${book.id}">SEE MORE</button>
+      `;
+      booksList.appendChild(bookItem);
+    });
+
+    // Додати обробник події для кнопок "See more"
+    const seeMoreButtons = document.querySelectorAll('.book-details-button');
+    seeMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const bookId = button.getAttribute('data-bookid');
+        getBookDetails(bookId);
+      });
+    });
+  }
+
+  // Функція для отримання деталей про книгу за допомогою Axios
+  function getBookDetails(bookId) {
+    axios.get(`https://books-backend.p.goit.global/books/${bookId}`)
+      .then(response => {
+        const book = response.data;
+        showModal(book);
+      })
+      .catch(error => {
+        showErrorNotification('Помилка при отриманні деталей про книгу.');
+        console.error(error);
+      });
+  }
+
+  // Функція для відображення модального вікна з детальною інформацією про книгу
+  function showModal(book) {
+    modalContent.innerHTML = `
+      <h2>${book.title}</h2>
+      <p>${book.author}</p>
+      <img src="${book.coverImageUrl}" alt="Обкладинка книги" />
+      <p>${book.description}</p>
+    `;
+    modal.style.display = 'block';
+  }
+
+  // ... (додатковий код для обробки подій кнопок та логотипів благодійних фондів, як ви потребуєте)
+
+

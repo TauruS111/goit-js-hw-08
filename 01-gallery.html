@@ -9,10 +9,19 @@
     <link rel="stylesheet" href="css/01-gallery.css" />
   </head>
   <body>
-    <p><a href="index.html">Go back</a></p>
-
-    <!-- Add gallery items to this list -->
-    <ul class="gallery"></ul>
+    <ul class="books-list">
+      <li class="books-item">
+        <img class="books-img" src="" alt="" />
+        <h2 class="books-title"></h2>
+        <p class="books-author"></p>
+        <button class="book-details-button" data-bookid="bookId">
+          SEE MORE
+        </button>
+      </li>
+    </ul>
+    <div class="modal">
+      <div class="modal-content"></div>
+    </div>
 
     <script src="js/01-gallery.js" type="module"></script>
   </body>
