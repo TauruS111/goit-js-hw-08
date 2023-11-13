@@ -2,26 +2,104 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SimpleLightbox library</title>
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/01-gallery.css" />
+    <title>BookShelf_group3</title>
+    видалити з 9-14 перед відправкою
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/01-gallery.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/modern-normalize@2.0.0/modern-normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notiflix@2.7.0/dist/notiflix-aio-umd.min.css"
+    />
   </head>
   <body>
-    <ul class="books-list">
-      <li class="books-item">
-        <img class="books-img" src="" alt="" />
-        <h2 class="books-title"></h2>
-        <p class="books-author"></p>
-        <button class="book-details-button" data-bookid="bookId">
-          SEE MORE
-        </button>
-      </li>
-    </ul>
-    <div class="modal">
-      <div class="modal-content"></div>
+    <div class="support-container">
+      <div class="support-header">
+        <h3 class="suppot-h3">Support Ukraine</h3>
+        <svg class="support-logo" width="20" height="32">
+          <use href="../img/sprite.svg#icon-Vector-1"></use>
+        </svg>
+      </div>
+      <ul class="foundations-list"></ul>
+      <button class="support-slider-button"></button>
     </div>
+    <!-- <div><button class="open" id="openModalBtn">MODAL WINDOW</button></div>
+    <div class="author-win is-hidden" data-modal>
+      <div class="modal-window">
+        <button class="btn-close" type="button" data-modal-close>
+          <svg class="icone-close" width="28" height="28">
+            <use href="../img/sprite.svg#icon-x-close"></use>
+          </svg>
+        </button>
+
+        <form class="form-win" name="client-form" autocomplete="off">
+          <div class="form-div">
+            <div class="form-container">
+              <label class="form-label" for="user-name"></label>
+              <div class="form-wrapper">
+                <input
+                  class="form-input"
+                  type="text"
+                  id="user-name"
+                  name="user-name"
+                  placeholder="NAME"
+                />
+              </div>
+            </div>
+
+            <div class="form-container">
+              <label class="form-label" for="e-mail"></label>
+              <div class="form-wrapper">
+                <input
+                  class="form-input"
+                  type="email"
+                  id="e-mail"
+                  name="email"
+                  placeholder="EMAIL"
+                />
+                <svg class="icon-modal" width="28" height="28">
+                  <use href="../img/sprite.svg#icon-mail-02"></use>
+                </svg>
+              </div>
+            </div>
+
+            <div class="form-container">
+              <label class="form-label" for="password"></label>
+              <div class="form-wrapper">
+                <input
+                  class="form-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="PASSWORD"
+                />
+                <svg class="icon-modal" width="28" height="28">
+                  <use href="../img/sprite.svg#icon-lock-02"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="btn-div">
+            <button class="submit" type="submit">SIGN UP</button>
+          </div>
+          <div class="enter">
+            <button class="toggle-btn-up active" type="button">SIGN UP</button>
+            <button class="toggle-btn-in" type="button">SIGN IN</button>
+          </div>
+        </form>
+      </div>
+    </div> -->
 
     <script src="js/01-gallery.js" type="module"></script>
   </body>
